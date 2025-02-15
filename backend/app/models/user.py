@@ -8,6 +8,9 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     google_id = db.Column(db.String(128), unique=True, nullable=True)
     
+    # Add this new relationship
+    trips = db.relationship('Trip', backref='user', lazy=True)
+    
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
         
