@@ -17,10 +17,8 @@ def create_app():
     
     from app.models.user import User
     from app.auth.routes import auth_bp
-    from app.routes.trip_routes import trip_bp
     
     app.register_blueprint(auth_bp)
-    app.register_blueprint(trip_bp, url_prefix='/api')
     
     @login_manager.user_loader
     def load_user(user_id):
